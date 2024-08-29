@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Match and Replace Tool</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="water.css">
+<script>
+  function showMatches() {
+    var text = document.getElementById('text').value;
+    var pattern = document.getElementById('pattern').value;
+    var flags = document.getElementById('flags').value;
+    var regex = new RegExp(pattern, flags);
+
+    var matches = text.match(regex);
+    var matchCount = matches ? matches.length : 0;
+
+    var highlightedText = text.replace(regex, function(match) {
+      return '<span class="highlight">' + match + '</span>';
+    });
+
+    document.getElementById('matchCount').innerText = 'Matches: ' + matchCount;
+    document.getElementById('highlightedBox').innerHTML = highlightedText;
+    document.getElementById('outputContainer').style.display = 'block'; // Show the output container
+    document.getElementById('resultBox').style.display = 'none'; // Hide the output text box
+  document.getElementById('results').innerHTML = "Matches";
+  }
+
+  function performReplacement() {
+    var text = document.getElementById('text').value;
+    var pattern = document.getElementById('pattern').value;
+    var substitution = document.getElementById('substitution').value;
+    var flags = document.getElementById('flags').value;
+    var regex = new RegExp(pattern, flags);
+    var replacedText = text.replace(regex, substitution);
+    document.getElementById('resultBox').value = replacedText;
+    document.getElementById('outputContainer').style.display = 'none'; // Hide the output container
+    document.getElementById('resultBox').style.display = 'block'; // Show the output text box
+  document.getElementById('results').innerHTML = "Replaced Text";
+  }
+</script>
+</head>
+<body>
+  <h2>Regex Match and Replace Tool</h2>
+  <div class="input-group">
+    <label for="text">Text:</label>
+    <textarea id="text" rows="4" cols="45"></textarea>
+  </div>
+  <div class="input-group">
+    <div class="inline-input">
+      <label for="pattern">Pattern:</label>
+      <input type="text" id="pattern" />
+    </div>
+    <div class="inline-input">
+      <label for="flags">Flags:</label>
+      <input type="text" id="flags" />
+    </div>
+  </div>
+  
+  <button onclick="showMatches()">Show Matches</button>
+  
+  <div class="input-group">
+    <label for="substitution">Substitution:</label>
+    <input type="text" id="substitution" />
+      <button onclick="performReplacement()">Replace</button>
+  </div>
+  
+  <div class="input-group">
+    <h2 id="results"></h2>
+    <div id="matchCount"></div>
+    <div id="outputContainer" class="output-container">
+      <div id="highlightedBox"></div>
+    </div>
+    <textarea id="resultBox" rows="4" cols="45" readonly style="display: none;"></textarea>
+  </div>
+  </div>
+<hr>
+  
+    <h3> Resources </h3>
+    <ul>
+      <li><a href = "https://regex101.com">regex101.com</a></li>
+      <li><a href = "https://regex-generator.olafneumann.org/">Regex Generator</a></li>
+    </ul>
+  
+  <footer>
+  uses <a href="https://watercss.kognise.dev/"> water.css</a>
+  </footer>
+</body>
+</html>

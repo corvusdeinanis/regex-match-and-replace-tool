@@ -1,0 +1,10 @@
+html, body {
+padding: 10px;
+}
+.highlight { background-color: purple; }
+.inline-input{
+display: inline-block;
+}
+.input-group { margin-bottom: 10px; }
+.input-group label { margin-right: 5px; }
+.output-container { display: none; overflow-y: auto; max-height: 200px; border: 1px solid #ccc; padding: 5px; }
